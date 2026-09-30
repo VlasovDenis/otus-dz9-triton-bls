@@ -1,0 +1,12 @@
+name: "text_classifier"
+backend: "onnxruntime"
+max_batch_size: 16
+input [ { name: "EMBEDDING" data_type: TYPE_FP32 dims: [384] } ]
+output [ { name: "PROBABILITIES" data_type: TYPE_FP32 dims: [2] } ]
+instance_group [ { kind: KIND_CPU count: 1 } ]
+dynamic_batching {
+  preferred_batch_size: [2, 4, 8]
+  max_queue_delay_microseconds: 2000
+}
+version_policy: { specific: { versions: [1] } }
+

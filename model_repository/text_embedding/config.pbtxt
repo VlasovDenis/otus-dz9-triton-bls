@@ -1,0 +1,8 @@
+name: "text_embedding"
+backend: "python"
+max_batch_size: 0
+input [ { name: "TEXT" data_type: TYPE_STRING dims: [1] } ]
+output [ { name: "EMBEDDING" data_type: TYPE_FP32 dims: [1, 384] } ]
+instance_group [ { kind: KIND_CPU count: 1 } ]
+version_policy: { specific: { versions: [1] } }
+

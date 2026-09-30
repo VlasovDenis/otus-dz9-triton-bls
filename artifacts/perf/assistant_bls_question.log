@@ -1,0 +1,32 @@
+
+=================================
+== Triton Inference Server SDK ==
+=================================
+
+NVIDIA Release 26.08 (build 413061521)
+
+Copyright (c) 2018-2026, NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
+
+Various files include modifications (c) NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
+
+GOVERNING TERMS: The software and materials are governed by the NVIDIA Software License Agreement
+(found at https://www.nvidia.com/en-us/agreements/enterprise-software/nvidia-software-license-agreement/)
+and the Product-Specific Terms for NVIDIA AI Products
+(found at https://www.nvidia.com/en-us/agreements/enterprise-software/product-specific-terms-for-ai-products/).
+
+WARNING: The NVIDIA Driver was not detected.  GPU functionality will not be available.
+   Use the NVIDIA Container Toolkit to start this container with GPU support; see
+   https://docs.nvidia.com/datacenter/cloud-native/ .
+
+ Successfully read data for 1 stream/streams with 1 step/steps.
+*** Measurement Settings ***
+  Batch size: 1
+  Service Kind: TRITON
+  Using "time_windows" mode for stabilization
+  Stabilizing using average latency and throughput
+  Measurement window: 10000 msec
+  Latency limit: 0 msec
+  Concurrency limit: 4 concurrent requests
+  Using synchronous calls for inference
+
+Request concurrency: 1

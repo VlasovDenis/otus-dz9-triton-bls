@@ -1,0 +1,7 @@
+numpy>=1.26,<3
+torch>=2.7,<3
+transformers>=4.45,<6
+huggingface-hub>=0.25,<2
+onnx>=1.16,<2
+tritonclient[http]>=2.50,<3
+

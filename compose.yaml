@@ -1,0 +1,22 @@
+services:
+  triton:
+    build: .
+    image: dz9-triton:26.08
+    gpus: all
+    shm_size: 1gb
+    ports:
+      - "127.0.0.1:8000:8000"
+      - "127.0.0.1:8001:8001"
+      - "127.0.0.1:8002:8002"
+    volumes:
+      - ./model_repository:/models:ro
+      - ./assets/models:/opt/dz9/models:ro
+    environment:
+      HF_HUB_OFFLINE: "1"
+      TRANSFORMERS_OFFLINE: "1"
+      OMP_NUM_THREADS: "4"
+      VLLM_USE_V2_MODEL_RUNNER: "0"
+    command: >-
+      tritonserver --model-repository=/models --strict-readiness=true
+      --model-load-thread-count=1
+

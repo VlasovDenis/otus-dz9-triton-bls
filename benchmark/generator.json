@@ -1,0 +1,2 @@
+{"data":[{"text_input":["<|im_start|>user\nЧто такое Triton Inference Server?<|im_end|>\n<|im_start|>assistant\n"],"sampling_parameters":["{\"max_tokens\":64,\"temperature\":0}"],"stream":[false],"exclude_input_in_output":[true]}]}
+

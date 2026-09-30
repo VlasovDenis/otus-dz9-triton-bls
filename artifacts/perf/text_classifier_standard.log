@@ -1,0 +1,96 @@
+
+=================================
+== Triton Inference Server SDK ==
+=================================
+
+NVIDIA Release 26.08 (build 413061521)
+
+Copyright (c) 2018-2026, NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
+
+Various files include modifications (c) NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
+
+GOVERNING TERMS: The software and materials are governed by the NVIDIA Software License Agreement
+(found at https://www.nvidia.com/en-us/agreements/enterprise-software/nvidia-software-license-agreement/)
+and the Product-Specific Terms for NVIDIA AI Products
+(found at https://www.nvidia.com/en-us/agreements/enterprise-software/product-specific-terms-for-ai-products/).
+
+WARNING: The NVIDIA Driver was not detected.  GPU functionality will not be available.
+   Use the NVIDIA Container Toolkit to start this container with GPU support; see
+   https://docs.nvidia.com/datacenter/cloud-native/ .
+
+ Successfully read data for 1 stream/streams with 1 step/steps.
+*** Measurement Settings ***
+  Batch size: 1
+  Service Kind: TRITON
+  Using "time_windows" mode for stabilization
+  Stabilizing using average latency and throughput
+  Measurement window: 10000 msec
+  Latency limit: 0 msec
+  Concurrency limit: 4 concurrent requests
+  Using synchronous calls for inference
+
+Request concurrency: 1
+  Client: 
+    Request count: 12979
+    Throughput: 360.252 infer/sec
+    Avg latency: 2762 usec (standard deviation 447 usec)
+    p50 latency: 2712 usec
+    p90 latency: 2958 usec
+    p95 latency: 3031 usec
+    p99 latency: 3294 usec
+    Avg gRPC time: 2750 usec ((un)marshal request/response 5 usec + response wait 2745 usec)
+  Server: 
+    Inference count: 12979
+    Execution count: 12979
+    Successful request count: 12979
+    Avg request latency: 2310 usec (overhead 111 usec + queue 2144 usec + compute input 14 usec + compute infer 33 usec + compute output 7 usec)
+Request concurrency: 2
+  Client: 
+    Request count: 111829
+    Throughput: 3084.75 infer/sec
+    Avg latency: 639 usec (standard deviation 168 usec)
+    p50 latency: 607 usec
+    p90 latency: 742 usec
+    p95 latency: 832 usec
+    p99 latency: 1216 usec
+    Avg gRPC time: 630 usec ((un)marshal request/response 3 usec + response wait 627 usec)
+  Server: 
+    Inference count: 111828
+    Execution count: 55939
+    Successful request count: 111828
+    Avg request latency: 246 usec (overhead 135 usec + queue 72 usec + compute input 11 usec + compute infer 22 usec + compute output 5 usec)
+Request concurrency: 3
+  Client: 
+    Request count: 121080
+    Throughput: 3345.49 infer/sec
+    Avg latency: 888 usec (standard deviation 302 usec)
+    p50 latency: 864 usec
+    p90 latency: 1214 usec
+    p95 latency: 1284 usec
+    p99 latency: 1566 usec
+    Avg gRPC time: 879 usec ((un)marshal request/response 3 usec + response wait 876 usec)
+  Server: 
+    Inference count: 121082
+    Execution count: 60552
+    Successful request count: 121082
+    Avg request latency: 516 usec (overhead 131 usec + queue 349 usec + compute input 10 usec + compute infer 20 usec + compute output 5 usec)
+Request concurrency: 4
+  Client: 
+    Request count: 206675
+    Throughput: 5670.13 infer/sec
+    Avg latency: 696 usec (standard deviation 128 usec)
+    p50 latency: 681 usec
+    p90 latency: 829 usec
+    p95 latency: 886 usec
+    p99 latency: 1110 usec
+    Avg gRPC time: 688 usec ((un)marshal request/response 3 usec + response wait 685 usec)
+  Server: 
+    Inference count: 206676
+    Execution count: 96145
+    Successful request count: 206676
+    Avg request latency: 263 usec (overhead 119 usec + queue 109 usec + compute input 10 usec + compute infer 19 usec + compute output 5 usec)
+Inferences/Second vs. Client Average Batch Latency
+Concurrency: 1, throughput: 360.252 infer/sec, latency 2762 usec
+Concurrency: 2, throughput: 3084.75 infer/sec, latency 639 usec
+Concurrency: 3, throughput: 3345.49 infer/sec, latency 888 usec
+Concurrency: 4, throughput: 5670.13 infer/sec, latency 696 usec

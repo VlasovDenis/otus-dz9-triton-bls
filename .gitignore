@@ -1,0 +1,7 @@
+assets/models/
+model_repository/text_classifier/1/model.onnx
+artifacts/
+.venv/
+__pycache__/
+*.pyc
+
