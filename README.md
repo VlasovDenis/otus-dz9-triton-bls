@@ -16,12 +16,12 @@ docker compose build
 docker compose up -d
 docker compose logs --tail=120 triton
 curl --noproxy 127.0.0.1 -fsS http://127.0.0.1:8000/v2/health/ready
-curl --noproxy 127.0.0.1 -fsS http://127.0.0.1:8000/v2/repository/index
+curl --noproxy 127.0.0.1 -fsS -X POST -H 'Content-Type: application/json' -d '{}' http://127.0.0.1:8000/v2/repository/index
 python scripts/client.py 'Что такое Triton Inference Server?'
 python scripts/client.py 'Сервер успешно запущен.'
 ```
 
-`config.pbtxt` лежит у корня каждой модели; версия каждой модели находится в `1/`. ONNX файл создаёт `scripts/build_classifier.py`. BLS зависимости существуют в коде его `InferenceRequest`: `config.pbtxt` Python BLS не описывает DAG как конфигурация обычного Triton ensemble. Нужен статус READY у всех четырёх моделей.
+`config.pbtxt` лежит у корня каждой модели; версия каждой модели находится в `1/`. ONNX файл создаётся `scripts/build_classifier.py` и включён в репозиторий. BLS зависимости существуют в коде его `InferenceRequest`: `config.pbtxt` Python BLS не описывает DAG как конфигурация обычного Triton ensemble. Нужен статус READY у всех четырёх моделей.
 
 На RTX 3070 с 8 GiB embedding и ONNX classifier работают на CPU. vLLM ограничен `gpu_memory_utilization=0.55`; при проблемах с памятью закройте другие процессы GPU и уменьшите это значение или `max_model_len`.
 
@@ -36,14 +36,14 @@ nvidia-smi
 curl --noproxy 127.0.0.1 -fsS http://127.0.0.1:8002/metrics > artifacts/perf/metrics.prom
 ```
 
-Perf Analyzer запускается из `26.08-py3-sdk`. Для прямой нагрузки на decoupled vLLM используется `--streaming`; BLS возвращает обычный один ответ. Логи сохраняются в `artifacts/perf/`. Перед сдачей заполнить `docs/REPORT.md` измеренными значениями и указать использованные версии/ревизии весов.
+Perf Analyzer запускается из `26.08-py3-sdk`. Для прямой нагрузки на decoupled vLLM используется `--streaming`; BLS возвращает обычный один ответ. Фактические результаты и ограничения измерений приведены в [отчёте](docs/REPORT.md); исходные логи Perf Analyzer включены в `artifacts/perf/`. Модельные веса скачиваются при подготовке и не включены в Git.
 
 ## Структура
 
 ```text
 model_repository/
   text_embedding/config.pbtxt, 1/model.py
-  text_classifier/config.pbtxt, 1/model.onnx (создаётся локально)
+  text_classifier/config.pbtxt, 1/model.onnx (сгенерирован и включён в Git)
   text_generator/config.pbtxt, 1/model.json
   assistant_bls/config.pbtxt, 1/model.py
 ```
